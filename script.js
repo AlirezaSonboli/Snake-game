@@ -42,8 +42,8 @@ function createFood(params) {
     })
 }
 
-document.addEventListener('keydown', changeDirection);
-function changeDirection(event) {
+document.addEventListener('keydown', changeDirectionPC);
+function changeDirectionPC(event) {
     const LEFT_KEY = 'ArrowLeft';
     const RIGHT_KEY = 'ArrowRight';
     const UP_KEY = 'ArrowUp';
@@ -137,14 +137,34 @@ function advanceSnake() {
     }
 
 }
+function teleport(params) {
+    if (snake[0].x<0){
+        snake.forEach(snakePart => {
+            snakePart.x = 300
+        }
+        )
+    }   if (snake[0].y<0) {
+        snake.forEach(snakePart => {
+            snakePart.y = 300
+        }
+        )
+    }   if (snake[0].x>canvas.width) {
+        snake.forEach(snakePart => {
+            snakePart.x = 0
+        }
+        )
+    }   if (snake[0].y>canvas.height){
+        snake.forEach(snakePart => {
+            snakePart.y = 0
+        }
+        )
+    }
+
+
+}
 
 let gameOver = false
 function gameOvering() {
-    if (snake[0].x<0 || snake[0].y<0 || snake[0].x>canvas.width ||snake[0].y>canvas.height) {
-        gameOver = true
-        gameOverText.style.display = ('block')
-            document.getElementById('button').style.display = 'inline-block'
-    }
     snake.forEach((snakePart, index) => {
         if (index!==0 && snake[0].x === snakePart.x && snake[0].y === snakePart.y) {
             gameOver = true
@@ -185,6 +205,7 @@ function main(params) {
         drawCanvas()
         drawFood()
         drawSnake()
+        teleport()
         advanceSnake()
         gameOvering()
 
