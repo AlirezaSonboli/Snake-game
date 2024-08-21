@@ -138,27 +138,17 @@ function advanceSnake() {
 
 }
 function teleport(params) {
-    if (snake[0].x<0){
-        snake.forEach(snakePart => {
-            snakePart.x = 300
+    snake.forEach(snakePart => {
+        if (snakePart.x<0){
+            snakePart.x += 300
+        }   if (snakePart.y<0) {
+           snakePart.y += 300
+        }   if (snakePart.x>canvas.width) {
+                snakePart.x -= 310
+        }   if (snakePart.y>canvas.height){
+                snakePart.y -=310
         }
-        )
-    }   if (snake[0].y<0) {
-        snake.forEach(snakePart => {
-            snakePart.y = 300
-        }
-        )
-    }   if (snake[0].x>canvas.width) {
-        snake.forEach(snakePart => {
-            snakePart.x = 0
-        }
-        )
-    }   if (snake[0].y>canvas.height){
-        snake.forEach(snakePart => {
-            snakePart.y = 0
-        }
-        )
-    }
+    })
 
 
 }
