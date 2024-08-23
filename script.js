@@ -143,9 +143,9 @@ function teleport(params) {
             snakePart.x += 300
         }   if (snakePart.y<0) {
            snakePart.y += 300
-        }   if (snakePart.x>canvas.width) {
+        }   if (snakePart.x>canvas.width-1) {
                 snakePart.x -= 310
-        }   if (snakePart.y>canvas.height){
+        }   if (snakePart.y>canvas.height-1){
                 snakePart.y -=310
         }
     })
